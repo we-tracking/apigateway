@@ -22,7 +22,7 @@ class Migrate extends Displayer
         $user = getenv("DB_USER");
         $pass = getenv("DB_PASS");
         $dbName = getenv("DB_NAME");
-        $PDOConfig = "mysql:host=$host;dbname=$dbName;charset=utf8";
+        $PDOConfig = "mysql:host=$host;charset=utf8";
         $connection = new \PDO($PDOConfig, $user, $pass);
         foreach($this->getMigrations() as $migration){
             $connection->prepare($migration)->execute();
@@ -35,6 +35,7 @@ class Migrate extends Displayer
     public function getMigrations(): array{
         return [
            "CREATE DATABASE wetracking;",
+           "USE wetracking;",
            "CREATE TABLE `user` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `email` varchar(100) DEFAULT NULL,
