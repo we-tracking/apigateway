@@ -1,0 +1,41 @@
+RewriteEngine On
+#Options All -Indexes
+
+## ROUTER WWW Redirect.
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+## ROUTER HTTPS Redirect
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ROUTER URL Rewrite
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ route.php?route=/$1 [L,QSA]
+
+RewriteCond %{HTTP:Authorization} .+
+RewriteRule ^ - [E=HTTP_AUTHORIZATION:%0]
+
+## Bloqueia arquivos
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
+RewriteRule ^/?$ - [F,L]
+RewriteRule ^source/?$ - [F,L]
+RewriteRule ^log/?$ - [F,L]
+RewriteRule ^config/?$ - [F,L]
+RewriteRule ^vendor/?$ - [F,L]
+RewriteRule ^example/?$ - [F,L]
+
+IndexOptions +SuppressDescription
+
+ErrorDocument 403 "<html><body><h1>Forbidden :)</h1><hr><label></label></body></html>"
+ErrorDocument 404 "<html><body><h1>Not Found :)</h1><hr><label>Atlas nao encontrou nada aqui</label></body></html>"
+
+#### CONFIGURAÇOES SERIVODR httpd.conf
+#ServerSignature Off
+#ServerTokens Prod
