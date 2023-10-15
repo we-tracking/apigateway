@@ -54,7 +54,7 @@ class Command
     public function get(string $command)
     {
         if (!$this->isLoaded) {
-            init();
+            // init();
             $this->load();
         }
 
@@ -150,7 +150,6 @@ class Command
             if (count($command) == 0) {
                 throw new Exception("Comando '{$call}' nao existe!");
             }
-            
             $class = key($command);
             if($command[$class]["timeout"]){
                 set_time_limit($command[$class]["timeout"]);
@@ -163,6 +162,7 @@ class Command
             $this->execute($class);
 
         } catch (Throwable $e) {
+            
             resolve(
                 ExceptionHandlerInterface::class
                 )->render($e);

@@ -18,7 +18,7 @@ class Collect extends Displayer
         $products = $product->all();
 
         foreach($products as $product){
-            
+
         }
     }
 

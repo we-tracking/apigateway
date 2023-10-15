@@ -37,7 +37,7 @@ class CommandHandler implements ExceptionHandlerInterface
 
     public function render(\Throwable $error)
     {
-        $this->catch($error);
+        // $this->catch($error);
         if(!$this->renderMapped($error)){
             $this->console->error($error->getMessage());
         }
