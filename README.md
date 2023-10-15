@@ -13,6 +13,9 @@ execute o comando:
 ````
 
 altere as variaveis de ambiente (muito importante)
+
+---
+/.env:
 ````
 ####### ROTA #######
 BASE_PREFIX=/wetracking` #nome da pasta do projeto, provavelmente vai ser essa mesma
