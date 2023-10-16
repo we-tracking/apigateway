@@ -43,4 +43,14 @@ class ProductController
             "data" => $this->product->select()->where("user_id", $request->user()->id())->execute()
         ];
     }
+
+    public function byId(Request $request){
+
+        return [
+            "data" => $this->product->select()
+                ->where("user_id", $request->user()->id())
+                ->where("id", $request->id)
+                ->execute()
+        ];
+    }
 }
