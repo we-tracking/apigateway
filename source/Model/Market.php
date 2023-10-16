@@ -15,4 +15,6 @@ class Market extends Model{
     private $name;
     #[Column(alias: 'url')]
     private $url;
+    #[Column(alias: 'image')]
+    private $image;
 }

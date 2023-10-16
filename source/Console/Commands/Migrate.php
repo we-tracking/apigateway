@@ -66,7 +66,11 @@ class Migrate extends Displayer
             `market_id` int(11) DEFAULT NULL,
             PRIMARY KEY (`id`)
           ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-          "
+          ",
+          "ALTER TABLE `wetracking`.`product` 
+          ADD COLUMN `image` VARCHAR(100) NULL AFTER `ean`;",
+          "ALTER TABLE `wetracking`.`market` 
+          ADD COLUMN `image` VARCHAR(100) NULL AFTER `url`;"
         ];
     }
 }

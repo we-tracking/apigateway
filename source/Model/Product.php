@@ -19,7 +19,8 @@ class Product extends Model{
     private $ean;
     #[Column(alias: 'user_id')]
     private $user_id;
-
+    #[Column(alias: 'user_id')]
+    private $user_id;
     public function findByEmail(string $email): object|bool{
 
         return $this->select()->where("email", $email)->one();

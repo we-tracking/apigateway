@@ -26,6 +26,7 @@ class ProductController
                 "name" => $row['nome'],
                 "description" => $row['descricao'],
                 "ean" => $row['ean'],
+                "image" => $row['imagem'],
                 "user_id" => $request->user()->id(),
             ])->execute();
         }
