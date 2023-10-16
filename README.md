@@ -38,5 +38,5 @@ rode as migrations:
 
 rode as seeds: 
 ```
-    php wt seeds
+    php wt seed
 ````
