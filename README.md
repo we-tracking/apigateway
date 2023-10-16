@@ -1,11 +1,17 @@
 ## API DE INTEGRAÇÃO
 ---
 Automatização de consulta e coleta de preços
-### Primeiros passos
 
+### Requisitos
+---
+- Xampp php 8.1+
+- composer
+
+### Primeiros passos
+---
 Instale o Xampp ou qualquer software que executara o apache.
 
-clone este repositorio.
+clone este repositorio no xampp/htdocs ou no diretorio que for emular apache.
 
 altere as variaveis de ambiente (muito importante)
 ---
@@ -28,4 +34,9 @@ execute o comando:
 rode as migrations: 
 ```
     php wt migrate
+````
+
+rode as seeds: 
+```
+    php wt seeds
 ````

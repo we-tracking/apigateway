@@ -31,7 +31,8 @@ class Seed extends Displayer
 
     public function getSeeds(): array{
         return [
-          
+          "USE wetracking;",
+          "INSERT INTO market (name, url, image) values('Extra', 'https://www.clubeextra.com.br', 'https://static.gpa.digital/images/ex/logo-ex.png');"  
         ];
     }
 }
