@@ -3,7 +3,6 @@
 namespace Source\Console\Commands;
 
 use Source\Console\Displayer;
-use Source\Connection\DBConnect;
 
 class Migrate extends Displayer
 {
@@ -21,15 +20,13 @@ class Migrate extends Displayer
         $host = getenv("DB_HOST");
         $user = getenv("DB_USER");
         $pass = getenv("DB_PASS");
-        $dbName = getenv("DB_NAME");
         $PDOConfig = "mysql:host=$host;charset=utf8";
         $connection = new \PDO($PDOConfig, $user, $pass);
-        foreach($this->getMigrations() as $migration){
+        foreach($migrations as $migration){
             $connection->prepare($migration)->execute();
         }
 
         $pb->finish();
-
     }
 
     public function getMigrations(): array{
