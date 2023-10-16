@@ -46,11 +46,17 @@ class ProductController
 
     public function byId(Request $request){
 
+        $data = $this->product->select()
+        ->where("user_id", $request->user()->id())
+        ->where("id", $request->id)
+        ->one();
+
+        if(!$data){
+            throw new \Exception("Produto não encontrado");
+        }
+
         return [
-            "data" => $this->product->select()
-                ->where("user_id", $request->user()->id())
-                ->where("id", $request->id)
-                ->execute()
+            "data" => $data
         ];
     }
 }

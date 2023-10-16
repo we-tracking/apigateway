@@ -31,7 +31,6 @@ $router->post("/product/import", "ProductController:import", null, Auth::class);
 $router->get("/price/list", "PriceController:list", null, Auth::class);
 $router->get("/product/list", "ProductController:list", null, Auth::class);
 $router->get("/product/id/{id}", "ProductController:byId", null, Auth::class);
-$router->get("/product/id", "ProductController:list", null, Auth::class);
 $router->get("/market/list", "MarketController:list", null, Auth::class);
 
 /** Erros **/
