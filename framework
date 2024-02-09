@@ -1,0 +1,16 @@
+<?php
+
+use App\Exception\CommandHandler;
+use App\Console\Execution\CommandEmitter;
+use App\Contracts\ExceptionHandlerInterface;
+
+require __DIR__ . "/vendor/autoload.php";
+
+$app = require __DIR__ . "/boot/Application.php";
+
+$app->bind(
+    ExceptionHandlerInterface::class,
+    fn($app) => $app->make(CommandHandler::class)
+);
+
+$app->call(CommandEmitter::class . "@emitt");
