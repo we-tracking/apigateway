@@ -72,6 +72,10 @@ class Dispatcher
         foreach ($routes as $route) {
             $prefix = $group?->getPrefix() ?? $route?->getPrefix();
             $routePath = $prefix . $route->getRoute();
+            if (endsWith("/", $routePath) && !endsWith("/", $url)) {
+                $url .= "/";
+            }
+            
             $parameters = $this->routeMatches($routePath, $url);
             if ($parameters !== false) {
                 $this->updateRequestParameters($route, $parameters);
