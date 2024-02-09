@@ -107,10 +107,9 @@ class Dispatcher
 
     private function dispatchByUrl(string $url)
     {
-        $this->resolveGroupIfAssigned($url, $routes, $group);
+        $this->resolveGroupIfAssigned($url, $name, $routes, $group);
         $routes = $routes ?? $this->getDefinedRoutes();
         $routes = $routes[$this->getHttpMethod()] ?? [];
-
         if (empty($routes)) {
             $this->setHttpCode(HttpCode::NOT_FOUND);
             return false;

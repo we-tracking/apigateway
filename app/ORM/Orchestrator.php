@@ -127,4 +127,16 @@ abstract class Orchestrator
             })
         );
     }
+
+    public function __get(string $name)
+    {
+        return $this->rows[$name] ?? null;
+    }
+
+    public function __set(string $name, mixed $value)
+    {
+        $this->rows[$name] = $value;
+    }
+
+
 }

@@ -2,5 +2,12 @@
 
 use App\Routes\Router;
 
-Router::get("/", App\Controller\ThisIsATestController::class . "@index");
+/*
+|--------------------------------------------------------------------------
+| API HTTP ROUTES
+|--------------------------------------------------------------------------
+*/
+
+Router::post("/user/authenticate", App\Controller\Authentication::class . "@auth");
+
 

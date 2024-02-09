@@ -12,3 +12,5 @@ This software was developed with the purpose of being an API gateway and automat
     docker-compose build
 # run container as robot
     docker-compose up -d
+# run migrations and seed databse
+    docker-compose exec app php framework migration:up --seed

@@ -104,7 +104,7 @@ class Migrate extends Command
 
     private function getMigrationsFiles(): array
     {
-        return glob(config("migration.path") . "/*.php", );
+        return glob(config("database.migration.path") . "/*.php", );
     }
 
     private function getMigrations(): array
@@ -112,7 +112,7 @@ class Migrate extends Command
         if ($this->version() !== null) {
             return [$this->version()];
         }
-
+        
         return array_map(
             fn($file) => pathinfo(basename($file))['filename'],
             $this->getMigrationsFiles()
@@ -135,7 +135,7 @@ class Migrate extends Command
 
     private function getMigrationNamespace(): string
     {
-        return config("migration.namespace");
+        return config("database.migration.namespace");
     }
 
     private function queryBuilder(): QueryBuilder

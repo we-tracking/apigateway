@@ -20,7 +20,11 @@ class Handler implements ExceptionHandlerInterface
 
     private function resolveHttpCode(\Throwable $error): int
     {
-        return Http::tryFrom($error->getCode())?->value ?? Http::BAD_REQUEST->value;
+        $code = $error->getCode();
+        if(!is_int($code)){
+            $code = Http::BAD_REQUEST->value;
+        }
+        return Http::tryFrom($code)?->value ?? Http::BAD_REQUEST->value;
     }
 
     private function getResponseToSend(
