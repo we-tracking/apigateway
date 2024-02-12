@@ -23,4 +23,9 @@ class ModelCollection
         return empty($this->models);
     }
 
+    public function toArray(): array
+    {
+        return array_map(fn ($model) => $model->toArray(), $this->models);
+    }
+
 }

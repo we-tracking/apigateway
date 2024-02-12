@@ -128,6 +128,11 @@ abstract class Orchestrator
         );
     }
 
+    public function toArray(): array
+    {
+        return $this->rows;
+    }
+
     public function __get(string $name)
     {
         return $this->rows[$name] ?? null;

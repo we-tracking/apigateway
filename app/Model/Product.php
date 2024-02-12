@@ -16,7 +16,8 @@ class Product extends Model
             'name' => ":name",
             "user_id" => ":user_id",
             'ean' => ":ean",
-            'image_path' => ":image_path"
+            'image_path' => ":image_path",
+            'created_at' => "NOW()"
         ]);
 
         $result = $query->addParams([

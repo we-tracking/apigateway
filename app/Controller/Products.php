@@ -17,10 +17,15 @@ class Products
   ) {
   }
 
-  public function list(RequestInterface $request): ResponseInterface
-  {
+  public function list(
+    RequestInterface $request,
+    UserAuthenticaded $user
+  ): ResponseInterface {
+    
+    $products = $this->productService->listUserProducts($user->getUserId());
     return Response::json([
-      "message" => "List of products"
+      "message" => "List of products",
+      "data" => $products->toArray()
     ]);
   }
 
