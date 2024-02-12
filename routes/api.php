@@ -10,8 +10,9 @@ use App\Routes\Router;
 
 Router::post("/user/authenticate", App\Controller\Authentication::class . "@auth");
 
-Router::group("products", function (Router $router) {
+Router::group("product", function (Router $router) {
     $router->get("/", App\Controller\Products::class . "@list");
-})->prefix("products");
+    $router->post("/", App\Controller\Products::class . "@create");
+})->prefix("product");
 
 
