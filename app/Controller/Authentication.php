@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Http\Response\Response;
 use App\Input\UserAuthenticationInput;
 use App\Service\AuthenticationService;
+use App\Http\Response\ResponseInterface;
 
 class Authentication
 {
   public function auth(
     UserAuthenticationInput $input,
     AuthenticationService $authenticationService
-  ) {
+  ): ResponseInterface {
 
     $user = $authenticationService->authenticate(
       $input->request()->email,
