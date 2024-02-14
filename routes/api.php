@@ -14,9 +14,7 @@ Router::post("/user/authenticate", App\Controller\AuthenticationController::clas
 Router::group("product", function (Router $router) {
     $router->get("/", App\Controller\ProductsController::class . "@list");
     $router->post("/", App\Controller\ProductsController::class . "@create");
+    $router->get("/history/{productId}", App\Controller\ProductHistoryController::class . "@listByProduct");
 })->prefix("product")->middleware(AuthMiddleware::class);
 
-
-Router::group("price", function (Router $router) {
-    $router->get("/{productId}", App\Controller\ProductHistoryController::class . "@listByProduct");
-})->prefix("price")->middleware(AuthMiddleware::class);
+    
