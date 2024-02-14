@@ -28,8 +28,6 @@ RUN docker-php-ext-enable sockets
 
 COPY . .
 
-RUN chmod -R 777 .
-
 EXPOSE 80
 
 CMD ["apache2-foreground"]

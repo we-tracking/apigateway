@@ -3,7 +3,7 @@ services:
   app:
     container_name: app
     working_dir: /var/www/html
-    build: ./build
+    build: ./build/back
     ports:
       - "80:80"
     volumes:
@@ -14,15 +14,29 @@ services:
     env_file: 
       - ./.env
     networks:
-      - framework
+      - apigateway
   rabbitmq:
     container_name: app_rabbitmq
     image: rabbitmq:latest
     ports:
       - "5672:5672"
       - "15672:15672"
+    volumes:
+      - /var/www/html
     networks:
-      - framework
+      - apigateway
+  front:
+    container_name: front
+    working_dir: /var/www/html
+    build: ./build/front
+    ports:
+      - "81:81"
+    depends_on:
+      - app
+    env_file: 
+      - ./.env
+    networks:
+      - apigateway
   db:
     image: mysql:8.0.0
     container_name: app_db
@@ -37,15 +51,15 @@ services:
     ports:
       - 3306:3306
     networks:
-      - framework
+      - apigateway
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
 networks:
-  framework: 
+  apigateway: 
     driver: bridge
-    name: framework
+    name: apigateway
 volumes:
   database:
