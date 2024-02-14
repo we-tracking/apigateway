@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Entity\UserAuthenticaded;
+use App\Entity\ProductId;
 use App\Http\Response\Response;
 use App\Service\ProductService;
+use App\Entity\UserAuthenticaded;
 use App\Input\CreateProductInput;
 use App\Http\Request\RequestInterface;
 use App\Http\Response\ResponseInterface;
@@ -38,6 +39,7 @@ class ProductsController
     $inputs = $input->request()->all();
     $productId = $this->productService->createProduct(
       new Product(
+        new ProductId(),
         $inputs['name'],
         $inputs['ean'],
         $inputs['imagePath'],

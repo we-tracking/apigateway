@@ -22,4 +22,9 @@ class ProductService
     {
         return $this->product->findWhere("user_id", "=", $userId->getId());
     }
+
+    public function getAllProducts(): ModelCollection
+    {
+        return $this->product->all();
+    }
 }

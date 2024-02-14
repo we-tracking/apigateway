@@ -2,6 +2,7 @@
 
 namespace App\ORM;
 
+use App\ORM\Model;
 class ModelCollection
 {
     public function __construct(private array $models)
@@ -23,9 +24,20 @@ class ModelCollection
         return empty($this->models);
     }
 
+    public function count(): int
+    {
+        return count($this->models);
+    }
+
+    /** @return array<Model> */
+    public function getModels(): array
+    {
+        return $this->models;
+    }
+
     public function toArray(): array
     {
-        return array_map(fn ($model) => $model->toArray(), $this->models);
+        return array_map(fn($model) => $model->toArray(), $this->models);
     }
 
 }

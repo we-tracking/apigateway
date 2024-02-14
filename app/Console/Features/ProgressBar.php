@@ -51,6 +51,7 @@ class ProgressBar extends Command
     {
         $this->position = $this->total;
         $this->updateBar();
+        $this->removeLastLine();
         $this->output($this->getBar());
         $this->fresh();
     }
