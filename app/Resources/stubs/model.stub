@@ -1,0 +1,16 @@
+<?php
+
+namespace {{namespace}};
+
+use App\ORM\Model;
+use App\ORM\Attributes\Table;
+use App\ORM\Connection\Group\ConnectionGroup;
+use App\ORM\Connection\Group\DefaultConnection;
+
+#[Table('{{class}}')]
+class {{class}} extends Model
+{
+
+    //
+
+}

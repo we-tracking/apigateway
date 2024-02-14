@@ -7,7 +7,7 @@ use App\Input\UserAuthenticationInput;
 use App\Service\AuthenticationService;
 use App\Http\Response\ResponseInterface;
 
-class Authentication
+class AuthenticationController
 {
   public function auth(
     UserAuthenticationInput $input,

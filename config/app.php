@@ -10,6 +10,11 @@ return [
         "namespace" => "App\\Resources\\Providers",
     ],
 
+    "model" => [
+        "namespace" => "App\\Model",
+        "path" =>  ROOT_PATH . "/app/Model"
+    ],
+
     "command" => [
         "namespace" => "App\\Console\\Commands",
         "colors" => [

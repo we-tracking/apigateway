@@ -93,7 +93,12 @@ abstract class Orchestrator
     public static function findWhere(string $column, string $operator, mixed $value): ModelCollection
     {
         $model = self::makeInstance();
-        $result = $model->select()->where($column, $operator, $value)->execute();
+        $result = $model->select()
+            ->where($column, $operator, $id = ":" . uniqId())
+            ->addParams([
+                $id => $value
+            ])
+            ->execute();
         return $model->fetchClass($result);
     }
 

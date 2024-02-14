@@ -10,7 +10,7 @@ use App\Input\CreateProductInput;
 use App\Http\Request\RequestInterface;
 use App\Http\Response\ResponseInterface;
 
-class Products
+class ProductsController
 {
   public function __construct(
     private ProductService $productService
