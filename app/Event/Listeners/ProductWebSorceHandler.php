@@ -13,6 +13,12 @@ class ProductWebSorceHandler implements Listener
 
     public function handle(array $payload): void
     {
-        dd($payload);
+        $collection = unserialize($payload["productWebSourceCollection"]);
+
+        $product = $collection->getProduct();
+        foreach ($collection->getWebSources() as $webSource) {
+            dd($webSource);
+
+        }
     }
 }
