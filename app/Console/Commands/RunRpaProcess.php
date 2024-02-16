@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Console\Command;
 use App\Entity\ProductId;
-use App\Service\RPAService;
 use App\Service\ProductService;
 use App\Service\WebSourceService;
 use App\Event\Events\RPACollector;

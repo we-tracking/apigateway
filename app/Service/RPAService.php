@@ -3,8 +3,8 @@
 namespace App\Service;
 
 use App\Entity\WebSource;
-use App\Factory\RPAFactory;
 use App\Contracts\RPAProccess;
+use App\RPAModules\Factory\RPAFactory;
 
 class RPAService
 {
@@ -13,7 +13,7 @@ class RPAService
     ) {
     }
 
-    private function getInstanceFromWebSource(WebSource $webSource): RPAProccess
+    public function getModuleFrom(WebSource $webSource): RPAProccess
     {
         return $this->factory->fromWebSource($webSource);
     }

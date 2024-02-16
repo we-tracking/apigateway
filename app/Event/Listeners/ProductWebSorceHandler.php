@@ -4,9 +4,15 @@ namespace App\Event\Listeners;
 
 use App\Event\Listener;
 use App\Entity\WebSource;
+use App\Service\RPAService;
 
 class ProductWebSorceHandler implements Listener
 {
+    public function __construct(
+        private RPAService $rpaService
+    ){
+    }
+    
     public function name(): string
     {
         return "ProductWebSourceHandler";
@@ -19,7 +25,8 @@ class ProductWebSorceHandler implements Listener
         $product = $collection->getProduct();
         /** @var WebSource $websource */
         foreach ($collection->getWebSources() as $webSource) {
-            dd($webSource);
+            $rpa = $this->rpaService->getModuleFrom($webSource);
+            dd($rpa);
         }
     }
 }
