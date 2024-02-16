@@ -17,7 +17,7 @@ class User extends Model
 
     public function getUserByEmail(string $email): ?User
     {
-        return $this->findWhere('email', "=", "'$email'")->first();
+        return $this->findWhere('email', "=", $email)->first();
     }
 
 }
