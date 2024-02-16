@@ -14,7 +14,7 @@ class RPAFactory
         if (class_exists($className)) {
             $implementation = (new \ReflectionClass($className))->getInterfaceNames();
             if(in_array(RPAProccess::class, $implementation)) {
-                return new $className();
+                return resolve($className);
             }
             throw new \Exception("Class {$className} not implement RPAProccess");
         }
