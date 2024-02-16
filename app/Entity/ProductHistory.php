@@ -4,13 +4,13 @@ namespace App\Entity;
 
 use App\Entity\WebSourceId;
 
-class WebSource
-{
+class ProductHistory{
+
     public function __construct(
         private WebSourceId $webSourceId,
-        private string $name,
-        private string $url,
-    ) {
+        private ProductId $productId,
+        private string $price
+    ){
     }
 
     public function getWebSourceId(): WebSourceId
@@ -18,13 +18,14 @@ class WebSource
         return $this->webSourceId;
     }
 
-    public function getName(): string
+    public function getProductId(): ProductId
     {
-        return $this->name;
+        return $this->productId;
     }
 
-    public function getUrl(): string
+    public function getPrice(): string
     {
-        return $this->url;
+        return $this->price;
     }
+
 }

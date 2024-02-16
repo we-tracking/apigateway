@@ -3,6 +3,7 @@
 namespace App\RPAModules\Domains\Extra;
 use App\Curl\Curl;
 use App\Contracts\RPAProccess;
+use App\Exception\RPAException;
 
 class RPA extends Curl implements RPAProccess 
 {   
@@ -11,11 +12,24 @@ class RPA extends Curl implements RPAProccess
         return "https://www.extra.com.br";
     }
 
-    public function proccess(int $ean): void
+    public function proccess(int $ean): string
     {
         $response = $this->get("/{$ean}/b", $this->headers());
+        $url = $response->explode(
+            'data-testid="product-card-link-overlay" href="' . $this->domain(), '"'
+        );
 
-        dd($response);
+        if(empty($url)){
+            throw RPAException::productNotFound();
+        }
+
+        $response = $this->get($url, $this->headers());
+        $price = $response->explode('data-testid="product-price-value" id="product-price">', '<');
+        $price = trim(str_replace('R$ ', '', $price));
+        if(empty($price)){
+            throw  RPAException::priceNotFound();
+        }
+        return $price;
     }
 
     private function headers(): array 

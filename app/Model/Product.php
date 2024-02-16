@@ -10,7 +10,7 @@ use App\Entity\Product as ProductEntity;
 #[Table('products')]
 class Product extends Model
 {
-    public function createProduct(ProductEntity $product)
+    public function createProduct(ProductEntity $product): ProductId
     {
         $query = $this->insert([
             'name' => ":name",

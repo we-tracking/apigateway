@@ -16,4 +16,9 @@ class ProductHistoryService
     {
         return $this->productHistory->getByProductId($productId)->toArray();
     }
+
+    public function createProductHistory(\App\Entity\ProductHistory $productHistory): \App\Entity\ProductHistoryId
+    {
+        return $this->productHistory->createProductHistory($productHistory);
+    }
 }
