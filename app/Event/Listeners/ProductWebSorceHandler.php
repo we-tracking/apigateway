@@ -26,7 +26,7 @@ class ProductWebSorceHandler implements Listener
         /** @var WebSource $websource */
         foreach ($collection->getWebSources() as $webSource) {
             $rpa = $this->rpaService->getModuleFrom($webSource);
-            dd($rpa);
+            $rpa->proccess($product->getEan());
         }
     }
 }
