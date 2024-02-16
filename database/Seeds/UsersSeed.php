@@ -2,7 +2,7 @@
 
 namespace Database\Seeds;
 
-class Users extends \Database\Seed
+class UsersSeed extends \Database\Seed
 {
 
     public function handle(): void
