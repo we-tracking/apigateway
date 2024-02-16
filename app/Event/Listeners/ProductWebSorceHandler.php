@@ -3,6 +3,7 @@
 namespace App\Event\Listeners;
 
 use App\Event\Listener;
+use App\Entity\WebSource;
 
 class ProductWebSorceHandler implements Listener
 {
@@ -16,9 +17,9 @@ class ProductWebSorceHandler implements Listener
         $collection = unserialize($payload["productWebSourceCollection"]);
 
         $product = $collection->getProduct();
+        /** @var WebSource $websource */
         foreach ($collection->getWebSources() as $webSource) {
             dd($webSource);
-
         }
     }
 }
