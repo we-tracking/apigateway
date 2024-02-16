@@ -14,7 +14,7 @@ class ProductHistoryService
 
     public function listByProduct(ProductId $productId): array
     {
-        return $this->productHistory->getByProductId($productId)->toArray();
+        return $this->productHistory->getByProductId($productId);
     }
 
     public function createProductHistory(\App\Entity\ProductHistory $productHistory): \App\Entity\ProductHistoryId

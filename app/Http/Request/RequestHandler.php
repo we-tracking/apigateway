@@ -63,6 +63,8 @@ class RequestHandler
     private function prepareResponse(mixed $response): false|ResponseInterface
     {
         if ($response instanceof ResponseInterface) {
+            $response->addHeader("Access-Control-Allow-Origin", "*");
+            $response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
             return $response;
         }
 

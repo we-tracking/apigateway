@@ -52,6 +52,7 @@ services:
       - 3306:3306
     networks:
       - apigateway
+    command: ["--sql-mode=NO_ENGINE_SUBSTITUTION"]
     logging:
       driver: "json-file"
       options:

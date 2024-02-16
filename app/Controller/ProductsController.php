@@ -19,7 +19,6 @@ class ProductsController
   }
 
   public function list(
-    RequestInterface $request,
     UserAuthenticaded $user
   ): ResponseInterface {
     
@@ -53,6 +52,4 @@ class ProductsController
       ]
     ]);
   }
-
-
 }
