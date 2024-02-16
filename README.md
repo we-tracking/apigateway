@@ -7,7 +7,7 @@ This software was developed with the purpose of being an API gateway and automat
 ---
 ```bash
 # copy .env
-    cp example/.env .env
+    cp .env.example .env
 # build docker image
     docker-compose build
 # run container as robot
