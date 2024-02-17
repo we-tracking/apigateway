@@ -64,7 +64,7 @@ class RequestHandler
     {
         if ($response instanceof ResponseInterface) {
             $response->addHeader("Access-Control-Allow-Origin", "*");
-            $response->addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+            $response->addHeader("Access-Control-Allow-Headers", "Content-Type");
             return $response;
         }
 
