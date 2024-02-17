@@ -33,6 +33,8 @@ class WebSourceProducts extends Model
         ])
             ->join("web_source", "web_source.id = web_source_products.web_source_id")
             ->join("products", "products.id = web_source_products.product_id")
+            ->where("web_source_products.product_id","=", ":productId")
+            ->addParam(":productId", $productId->getId())
             ->execute()->fetchAll();
 
         if(empty($result)){
@@ -40,7 +42,7 @@ class WebSourceProducts extends Model
         }
 
         $product = new Product(
-            new ProductId($result[0]['product_id']),
+            $productId,
             $result[0]['product_name'],
             $result[0]['product_ean'],
             $result[0]['product_image_path'],
