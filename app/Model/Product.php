@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\ORM\Model;
+use App\Entity\UserId;
 use App\Entity\ProductId;
 use App\ORM\Attributes\Table;
 use App\Entity\Product as ProductEntity;
@@ -28,6 +29,19 @@ class Product extends Model
         ])->execute();
 
         return new ProductId($result->lastId());
+    }
+
+    public function userHasProduct(ProductEntity $product)
+    {
+        $query = $this->select()
+        ->where('user_id', '=', ':userId')
+        ->where('ean', '=', ':ean')
+        ->addParams([
+            ':userId' => $product->getUserId()->getId(),
+            ':ean' => $product->getEan()
+        ]);
+
+        return count($query->execute()->fetchAll()) > 0;
     }
 }
 

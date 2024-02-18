@@ -15,6 +15,11 @@ class ProductService
 
     public function createProduct(\App\Entity\Product $product): ProductId
     {
+        if($this->product->userHasProduct($product))
+        {
+            throw new \Exception(trans('messages.errors.productAlreadyExists'));
+        }
+
         return $this->product->createProduct($product);
     }
 

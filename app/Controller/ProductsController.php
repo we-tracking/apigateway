@@ -10,11 +10,13 @@ use App\Entity\UserAuthenticaded;
 use App\Input\CreateProductInput;
 use App\Http\Request\RequestInterface;
 use App\Http\Response\ResponseInterface;
+use App\Service\WebSourceService;
 
 class ProductsController
 {
   public function __construct(
-    private ProductService $productService
+    private ProductService $productService,
+    private WebSourceService $webSourceService
   ) {
   }
 
@@ -45,6 +47,14 @@ class ProductsController
         $user->getUserId()
       )
     );
+
+    if(isset($inputs['webSources'])){
+      $this->webSourceService->createProductWebSource(
+        $productId,
+        $inputs['webSources']
+      );
+    }   
+
     return Response::json([
       "message" => trans('messages.success.productCreated'),
       "data" => [

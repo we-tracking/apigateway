@@ -68,4 +68,16 @@ class WebSourceProducts extends Model
             return $webSources;
     }
 
+    public function createProductWebSource(ProductId $productId, WebSourceId $webSourceId)
+    {
+        $this->insert([
+            "product_id" => ":productId",
+            "web_source_id" => ":webSourceId",
+            "created_at" => "now()",
+        ])->addParams([
+            ":productId" => $productId->getId(),
+            ":webSourceId" => $webSourceId->getId()
+        ])->execute();
+    }
+
 }

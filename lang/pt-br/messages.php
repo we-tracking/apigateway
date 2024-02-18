@@ -13,7 +13,8 @@ return [
         'userNotFound' => 'Usuário não encontrado',
         'invalidPassword' => 'Email ou senha inválidos!',
         'userAlreadyExists" => "Usuário já cadastrado!',
-        'productNotFound' => 'Produto não encontrado'
+        'productNotFound' => 'Produto não encontrado',
+        'productAlreadyExists' => 'usuario ja possui um produto com ean fornecido cadastrado!'
     ],
 
     'success' => [
