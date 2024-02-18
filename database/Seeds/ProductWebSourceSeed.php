@@ -33,6 +33,16 @@ class ProductWebSourceSeed extends \Database\Seed
                 'web_source_id' => 2,
                 'product_id' => 2,
                 'created_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'web_source_id' => 3,
+                'product_id' => 2,
+                'created_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'web_source_id' => 3,
+                'product_id' => 2,
+                'created_at' => date("Y-m-d H:i:s")
             ]
         ];
     }

@@ -14,6 +14,7 @@ class ProductSeed extends \Database\Seed
     private function products(): array 
     {
         return [
+            
             [
                 "user_id" => 1,
                 "name" => "Ventilador de Mesa 40cm Mondial Super Turbo VTX-40-8P 8 Pás 3 Velocidades Preto",

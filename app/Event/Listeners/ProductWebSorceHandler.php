@@ -3,14 +3,15 @@
 namespace App\Event\Listeners;
 
 use App\Event\Listener;
+use App\Console\Command;
 use App\Entity\WebSource;
 use App\Service\RPAService;
 use App\Entity\ProductHistory;
+use App\Exception\RPAException;
 use App\Service\ProductHistoryService;
 use App\Entity\Collection\ProductWebSourceCollection;
-use App\Exception\RPAException;
 
-class ProductWebSorceHandler implements Listener
+class ProductWebSorceHandler extends Command implements Listener
 {
     public function __construct(
         private RPAService $rpaService,
@@ -29,6 +30,7 @@ class ProductWebSorceHandler implements Listener
         $collection = unserialize($payload["productWebSourceCollection"]);
 
         $product = $collection->getProduct();
+        $this->info("Processing product: {$product->getName()}");
         /** @var WebSource $websource */
         foreach ($collection->getWebSources() as $webSource) {
             $rpa = $this->rpaService->getModuleFrom($webSource);
@@ -41,8 +43,10 @@ class ProductWebSorceHandler implements Listener
                          $rpa->proccess($product->getEan())
                     )
                  );
+
+                 $this->success($webSource->getName());
             }catch(RPAException $error){
-                dd($error->getMessage());
+                $this->error($webSource->getName());
             }
 
         }

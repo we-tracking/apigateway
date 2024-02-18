@@ -28,6 +28,13 @@ class WebSourceSeed extends \Database\Seed
                 'logo_path' => 'https://www.casasbahia-imagens.com.br/App_Themes/CasasBahia/img/header/r/logo.svg',
                 'status' => 'ACTIVE',
                 'created_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                'name' => 'Ponto Frio',
+                'domain' => 'www.pontofrio.com.br',
+                'logo_path' => 'https://www.pontofrio-imagens.com.br/App_Themes/PontoFrio/img/header/r/logo.svg',
+                'status' => 'ACTIVE',
+                'created_at' => date("Y-m-d H:i:s")
             ]
 
         ];
