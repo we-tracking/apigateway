@@ -14,7 +14,7 @@ class WebSourceController
   public function list()
   { 
     return Response::json([
-      "message" => "web source list",
+      "message" => trans('messages.success.webSourceList'),
       "data" => $this->webSourceService->list()
     ]);
   }

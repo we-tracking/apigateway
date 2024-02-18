@@ -20,7 +20,7 @@ class ProductHistoryController
   ): ResponseInterface {
 
     return Response::json([
-      "message" => "List of prices by product",
+      "message" => trans('messages.success.productPriceList'),
       "data" => $this->productHistoryService->listByProduct(new ProductId($input->request()->productId))
     ]);
   }

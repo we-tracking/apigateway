@@ -24,7 +24,7 @@ class ProductsController
     
     $products = $this->productService->listUserProducts($user->getUserId());
     return Response::json([
-      "message" => "List of products",
+      "message" => trans('messages.success.productList'),
       "data" => $products->toArray()
     ]);
   }
@@ -46,7 +46,7 @@ class ProductsController
       )
     );
     return Response::json([
-      "message" => "Product created",
+      "message" => trans('messages.success.productCreated'),
       "data" => [
         "id" => $productId->getId()
       ]

@@ -23,7 +23,7 @@ class UserController
     );
 
     return Response::json([
-      "message" => "User created",
+      "message" => trans('messages.success.userCreated'),
       "data" => ["id" => $user->getId()]
     ]);
   }

@@ -12,9 +12,15 @@ return [
     'errors' => [
         'userNotFound' => 'Usuário não encontrado',
         'invalidPassword' => 'Email ou senha inválidos!',
+        'userAlreadyExists" => "Usuário já cadastrado!',
     ],
 
     'success' => [
         'authenticated' => 'Usuario autenticado com sucesso',
+        'productPriceList' => 'Lista de preços por produto gerada com sucesso',
+        'productCreated' => 'Produto criado com sucesso',
+        'productList' => 'Lista de produtos gerada com sucesso',
+        'userCreated' => 'Usuário criado com sucesso',
+        'webSourceList' => 'Lista de web gerada com sucesso',
     ],
 ];

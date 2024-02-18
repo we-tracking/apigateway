@@ -18,7 +18,7 @@ class UserService
     public function create(\App\Entity\User $user): UserId
     {
         if($this->findUserByEmail($user->getEmail()) !== null) {
-            throw new \Exception("User already exists!");
+            throw new \Exception(trans('messages.errors.userAlreadyExists'));
         }
 
         return $this->user->createUser($user);
