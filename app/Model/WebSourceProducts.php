@@ -9,8 +9,6 @@ use App\Entity\ProductId;
 use App\Entity\WebSource;
 use App\Entity\WebSourceId;
 use App\ORM\Attributes\Table;
-use App\ORM\Connection\Group\ConnectionGroup;
-use App\ORM\Connection\Group\DefaultConnection;
 use App\Entity\Collection\ProductWebSourceCollection;
 
 #[Table('web_source_products')]

@@ -2,8 +2,10 @@
 
 namespace App\Service;
 
-use App\Model\ProductHistory;
+use App\Entity\Collection\ProductHistoryCollection;
 use App\Entity\ProductId;
+use App\Entity\WebSourceId;
+use App\Model\ProductHistory;
 
 class ProductHistoryService
 {
@@ -20,5 +22,10 @@ class ProductHistoryService
     public function createProductHistory(\App\Entity\ProductHistory $productHistory): \App\Entity\ProductHistoryId
     {
         return $this->productHistory->createProductHistory($productHistory);
+    }
+
+    public function getProductHistory(ProductId $productId, WebSourceId $webSourceId): ProductHistoryCollection
+    {
+        return $this->productHistory->getByProductAndWebSource($productId, $webSourceId);
     }
 }

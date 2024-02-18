@@ -4,9 +4,11 @@ namespace App\Model;
 
 use App\ORM\Model;
 use App\Entity\ProductId;
+use App\Entity\WebSourceId;
 use App\ORM\ModelCollection;
 use App\ORM\Attributes\Table;
 use App\Entity\ProductHistoryId;
+use App\Entity\Collection\ProductHistoryCollection;
 
 #[Table('product_history')]
 class ProductHistory extends Model
@@ -38,6 +40,24 @@ class ProductHistory extends Model
             }
 
         return $query->execute()->fetchAll();
+    }
+
+    public function getByProductAndWebSource(ProductId $productId, WebSourceId $webSourceId): ProductHistoryCollection
+    {
+        $result = $this->select([
+            "product_id" => "productId",
+            "web_source_id" => "webSourceId",
+            "price" => "price",
+            "created_at" => "checkTime",
+        ])
+            ->where("product_id", "=", ':productId')
+            ->where("web_source_id", "=", ':webSourceId')
+            ->addParams([
+                ":productId" => $productId->getId(), 
+                ":webSourceId" => $webSourceId->getId()]
+            )->orderBy('created_at', 'DESC')->execute();
+
+        return new ProductHistoryCollection($result->fetchAll());
     }
 
     public function countTotalProductHistory(ProductId $productId): int
