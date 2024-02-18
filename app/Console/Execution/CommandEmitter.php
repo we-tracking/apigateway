@@ -88,7 +88,7 @@ class CommandEmitter extends Command
     {
         foreach ($commands as $command) {
             $this->quote($this->prepareOutput("  " . $command->command()), false);
-            $this->output($this->prepareOutput($command->description()), "", "", false);
+            $this->output($this->prepareOutput($command->description()), "#FFFFFF", "", false);
 
             if ($command->options() !== null) {
                 $options = $this->stringfyOptions($command->options());
