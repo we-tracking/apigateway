@@ -22,6 +22,11 @@ class WebSourceService
         return $this->webSource->getWebSourceById($webSourceId);
     }
 
+    public function list(): array
+    {
+        return $this->webSource->all()->toArray();
+    }
+
     public function getWebSourceFromProductId(ProductId $productId): ?ProductWebSourceCollection
     {
         return $this->webSourceProducts->getWebSourceFromProductId($productId);

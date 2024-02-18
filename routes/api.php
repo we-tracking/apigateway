@@ -17,4 +17,6 @@ Router::group("product", function (Router $router) {
     $router->get("/history/{productId}", App\Controller\ProductHistoryController::class . "@listByProduct");
 })->prefix("product")->middleware(AuthMiddleware::class);
 
-    
+Router::group("web-source", function (Router $router) {
+    $router->get("/", App\Controller\WebSourceController::class . "@list");
+})->prefix("web-source")->middleware(AuthMiddleware::class);
