@@ -3,8 +3,9 @@
 namespace App\Entity;
 
 use App\Entity\WebSourceId;
+use App\Contracts\ArrayAccessible;
 
-class WebSource
+class WebSource implements ArrayAccessible
 {
     public function __construct(
         private WebSourceId $webSourceId,
@@ -26,5 +27,14 @@ class WebSource
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'webSourceId' => $this->webSourceId->getId(),
+            'name' => $this->name,
+            'url' => $this->url,
+        ];
     }
 }

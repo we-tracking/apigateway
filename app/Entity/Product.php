@@ -3,8 +3,9 @@
 namespace App\Entity;
 
 use App\Entity\UserId;
+use App\Contracts\ArrayAccessible;
 
-class Product
+class Product implements ArrayAccessible
 {
     public function __construct(
         private ProductId $id,
@@ -38,6 +39,17 @@ class Product
     public function getUserId(): UserId
     {
         return $this->userId;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id->getId(),
+            'name' => $this->name,
+            'ean' => $this->ean,
+            'imagePath' => $this->imagePath,
+            'userId' => $this->userId->getId()
+        ];
     }
 }
 

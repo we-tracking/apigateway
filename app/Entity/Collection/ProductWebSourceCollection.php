@@ -4,8 +4,9 @@ namespace App\Entity\Collection;
 
 use App\Entity\Product;
 use App\Entity\WebSource;
+use App\Entity\Collection\Collection;
 
-class ProductWebSourceCollection
+class ProductWebSourceCollection extends Collection
 {
     public function __construct(
         private Product $product,

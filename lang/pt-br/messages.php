@@ -13,6 +13,7 @@ return [
         'userNotFound' => 'Usuário não encontrado',
         'invalidPassword' => 'Email ou senha inválidos!',
         'userAlreadyExists" => "Usuário já cadastrado!',
+        'productNotFound' => 'Produto não encontrado'
     ],
 
     'success' => [
@@ -22,5 +23,6 @@ return [
         'productList' => 'Lista de produtos gerada com sucesso',
         'userCreated' => 'Usuário criado com sucesso',
         'webSourceList' => 'Lista de web gerada com sucesso',
+        'productWebSourceList' => 'Lista de web gerada com sucesso',
     ],
 ];

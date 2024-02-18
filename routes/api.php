@@ -20,4 +20,5 @@ Router::group("product", function (Router $router) {
 
 Router::group("web-source", function (Router $router) {
     $router->get("/", App\Controller\WebSourceController::class . "@list");
+    $router->get("/product/{productId}", App\Controller\WebSourceController::class . "@listProductWebSource");
 })->prefix("web-source")->middleware(AuthMiddleware::class);
