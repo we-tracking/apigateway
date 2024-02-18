@@ -19,7 +19,7 @@ This software was developed with the purpose of being an API gateway and automat
 ---
 The automation proccessing is based on queue, so you will need to start rabbitMQ listening port.
  ```bash
-    docker-compose exec app php frameork event:listen
+    docker-compose exec app php framework event:listen
  ```
 
 Then put all active products to process with:
