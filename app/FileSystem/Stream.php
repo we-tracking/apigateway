@@ -52,7 +52,7 @@ class Stream implements StreamInterface
         $chunk = $chunk ?? self::FILE_CHUNK_SIZE;
 
         $result = fread($this->stream, $chunk);
-        if (!$result) {
+        if ($result === false) {
             throw new \RuntimeException("Error reading the stream");
         }
 
