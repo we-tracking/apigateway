@@ -9,9 +9,9 @@ use App\Service\WebSourceService;
 use App\Event\Events\RPACollector;
 use App\Console\Features\ProgressBar;
 
-class RunRpaProcess extends Command
+class RunRpaProccess extends Command
 {
-    private string $command = "run:rpa-process";
+    private string $command = "run:rpa-proccess";
     private string $description = "put into queue Products in RPA process";
 
     public function __construct(
