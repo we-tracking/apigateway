@@ -41,6 +41,11 @@ class Product implements ArrayAccessible
         return $this->userId;
     }
 
+    public function setId(ProductId $id): void
+    {
+        $this->id = $id;
+    }
+
     public function toArray(): array
     {
         return [

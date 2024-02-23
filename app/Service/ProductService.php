@@ -14,10 +14,10 @@ class ProductService
     }
 
     public function createProduct(\App\Entity\Product $product): ProductId
-    {
-        if($this->product->userHasProduct($product))
+    {   
+        if($productId = $this->product->userHasProduct($product))
         {
-            throw new \Exception(trans('messages.errors.productAlreadyExists'));
+            $product->setId($productId);
         }
 
         return $this->product->createProduct($product);
@@ -31,5 +31,15 @@ class ProductService
     public function getAllProducts(): ModelCollection
     {
         return $this->product->all();
+    }
+
+    public function commit()
+    {
+        $this->product->commit();
+    }
+
+    public function withRollBack()
+    {
+        $this->product->disableAutoCommit();
     }
 }

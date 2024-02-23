@@ -14,6 +14,15 @@ use App\Entity\Collection\ProductWebSourceCollection;
 #[Table('web_source_products')]
 class WebSourceProducts extends Model
 {
+
+    public function deleteProductWebSource(ProductId $productId)
+    {
+        $this->delete()
+            ->where("product_id", "=", ":productId")
+            ->addParam(":productId", $productId->getId())
+            ->execute();
+    }
+    
     public function getWebSourceFromProductId(ProductId $productId): ?ProductWebSourceCollection
     {
         $result = $this->queryBuilder()->select([

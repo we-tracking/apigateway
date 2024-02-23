@@ -34,6 +34,8 @@ class WebSourceService
 
     public function createProductWebSource(ProductId $productId, array $webSources)
     {
+        $this->webSourceProducts->deleteProductWebSource($productId);
+        
         foreach($webSources as $webSource) {
             $webSourceDb = $this->getWebSourceById(new WebSourceId($webSource['id']));
             if($webSourceDb->getUrl() != $this->getDomainFromUrl($webSource['url'])){

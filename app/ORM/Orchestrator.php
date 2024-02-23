@@ -23,6 +23,8 @@ abstract class Orchestrator
 
     protected ?string $table = null;
 
+    private Connection $connection;
+
     public final function __construct(private array $rows = [])
     {
     }
@@ -39,9 +41,14 @@ abstract class Orchestrator
         return ConnectionHandler::make($this->connectionGroup());
     }
 
-    protected function getConnection(): Connection
+    public function getConnection(): Connection
     {
-        return $this->getConnectionHandler()->getConnection();
+        if(isset($this->connection)){
+            return $this->connection;
+        }
+        $connection = $this->getConnectionHandler()->getConnection();
+        $connection->createConnection();
+        return $this->connection = $connection;
     }
 
     protected function queryBuilder(): QueryBuilder
@@ -123,7 +130,6 @@ abstract class Orchestrator
         return resolve(get_called_class());
     }
 
-    /** @return array<self> */
     private function fetchClass(QueryResult $queryResult): ModelCollection
     {
         return new ModelCollection(

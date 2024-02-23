@@ -10,4 +10,14 @@ class Model extends Orchestrator
     {
         return resolve(ConnectionGroup::class);
     }
+
+    public function disableAutoCommit(): void
+    {
+        $this->getConnection()->disableAutoCommit();
+    }
+
+    public function commit(): void
+    {
+        $this->getConnection()->commit();
+    }
 }
