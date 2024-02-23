@@ -35,8 +35,19 @@ class WebSourceService
     public function createProductWebSource(ProductId $productId, array $webSources)
     {
         foreach($webSources as $webSource) {
+            $webSourceDb = $this->getWebSourceById(new WebSourceId($webSource['id']));
+            if($webSourceDb->getUrl() != $this->getDomainFromUrl($webSource['url'])){
+                throw new \Exception("Invalid web source url");
+            }
+
             $this->webSourceProducts->createProductWebSource($productId, new WebSourceId($webSource['id']), $webSource['url']);
         }
+    }
+
+
+    public function getDomainFromUrl(string $url): ?string
+    {
+        return parse_url($url, PHP_URL_HOST);
     }
 }
 

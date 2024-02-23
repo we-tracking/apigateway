@@ -47,12 +47,17 @@ class ProductsController
         $user->getUserId()
       )
     );
-
+    
     if(isset($inputs['webSources'])){
-      $this->webSourceService->createProductWebSource(
-        $productId,
-        $inputs['webSources']
-      );
+      try{
+        $this->webSourceService->createProductWebSource(
+          $productId,
+          $inputs['webSources']
+        );
+      }catch(\Throwable $e){
+        throw $e;
+      }
+     
     }   
 
     return Response::json([

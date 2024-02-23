@@ -13,9 +13,9 @@ class WebSource extends Model
     {
         $webSource = $this->find($webSourceId->getId());
         return new \App\Entity\WebSource(
-            $webSource->id,
+            new WebSourceId($webSource->id),
             $webSource->name,
-            $webSource->url,
+            $webSource->domain,
         );
     }
 
