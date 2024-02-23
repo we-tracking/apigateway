@@ -14,7 +14,7 @@ class RPAFactory
 
     public function fromWebSource(WebSource $webSource): RPAProccess
     {
-        $registration = $this->findRegistration($webSource->getUrl());
+        $registration = $this->findRegistration($this->getUrlDomain($webSource->getUrl()));
         return $this->container->make($registration);
     }
 
@@ -38,6 +38,15 @@ class RPAFactory
     {
         $implementation = (new \ReflectionClass($class))->getInterfaceNames();
         return in_array(RPAProccess::class, $implementation);
+    }
+
+    private function getUrlDomain(string $url): string
+    {
+        $domain = parse_url($url, PHP_URL_HOST);
+        if(!$domain) {
+            throw new \Exception("Domain not found");
+        }
+        return $domain;
     }
 
     private function getRegistration(): array

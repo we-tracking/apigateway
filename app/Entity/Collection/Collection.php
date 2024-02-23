@@ -6,7 +6,7 @@ use App\Contracts\ArrayAccessible;
 
 abstract class Collection implements ArrayAccessible
 {
-    public function __construct(protected array $items)
+    public function __construct(public array $items = [])
     {
     }
 

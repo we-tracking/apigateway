@@ -8,23 +8,13 @@ use App\Exception\RPAException;
 
 class RPA extends Curl implements RPAProccess 
 {   
-    public function domain(): string 
+
+    public function proccess(string $url): string
     {
-        return "https://www.pontofrio.com.br";
-    }
-
-    public function proccess(int $ean): string
-    {
-        $response = $this->get("/{$ean}/b", $this->headers());
-        $url = $response->explode(
-            'data-testid="product-card-link-overlay" href="' . $this->domain(), '"'
-        );
-
-        if(empty($url)){
-            throw RPAException::productNotFound();
-        }
-
         $response = $this->get($url, $this->headers());
+        if(!$response->contains('data-testid="product-price-value')){
+            throw RPAException::productNotFound(); 
+        }
         $price = $response->explode('data-testid="product-price-value" id="product-price">', '<');
         $price = trim(str_replace('R$ ', '', $price));
         if(empty($price)){

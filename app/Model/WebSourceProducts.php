@@ -49,7 +49,8 @@ class WebSourceProducts extends Model
             "web_source.id as web_source_id",
             "web_source.name as web_source_name",
             "web_source.domain as web_source_domain",
-            "web_source.logo_path as web_source_logo_path"
+            "web_source.logo_path as web_source_logo_path",
+            "web_source_products.web_source_url as web_source_url"
 
         ])
             ->join("web_source", "web_source.id = web_source_products.web_source_id")
@@ -61,7 +62,7 @@ class WebSourceProducts extends Model
                 return new WebSource(
                     new WebSourceId($webSource['web_source_id']),
                     $webSource['web_source_name'],
-                    $webSource['web_source_domain'],
+                    $webSource['web_source_url'],
                 );
             }, $result);
 

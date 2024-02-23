@@ -9,20 +9,24 @@ use App\Entity\Collection\Collection;
 class ProductWebSourceCollection extends Collection
 {
     public function __construct(
-        private Product $product,
-        private array $webSources
+         Product $product,
+         array $webSources
     ) {
+        parent::__construct([
+            "product" => $product,
+            "webSources" => $webSources
+        ]); 
     }
 
     public function getProduct(): Product
     {
-        return $this->product;
+        return $this->items['product'];
     }
 
     /** @return array<WebSource> */
     public function getWebSources(): array
     {
-        return $this->webSources;
+        return $this->items['webSources'];
     }
 }
 

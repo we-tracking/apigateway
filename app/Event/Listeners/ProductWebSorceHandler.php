@@ -40,7 +40,7 @@ class ProductWebSorceHandler extends Command implements Listener
                     new ProductHistory(
                          $webSource->getWebSourceId(),
                          $product->getId(),
-                         $rpa->proccess($product->getEan())
+                         $rpa->proccess($webSource->getUrl())
                     )
                  );
 

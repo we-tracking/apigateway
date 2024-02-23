@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface RPAProccess
 {
-    public function proccess(int $ean): string;
+    public function proccess(string $url): string;
 }
