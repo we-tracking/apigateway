@@ -8,7 +8,7 @@ class CreateProductInput extends Input
     {
         return [
             "name" => "required|string|maxLength:255|minLength:3",
-            "ean" => "required",
+            "ean" => "required|minLength:13|maxLength:13",
             "imagePath" => "required",
         ];
     }

@@ -43,6 +43,12 @@ class ProductWebSourceSeed extends \Database\Seed
                 'product_id' => 2,
                 "web_source_url" => "https://www.pontofrio.com.br/apple-iphone-14-pro-max-512gb-roxo-profundo/p/55054426?utm_source=gp_branding&utm_medium=cpc&utm_campaign=gg_brd_inst_ponto_exata",
                 'created_at' => date("Y-m-d H:i:s")
+            ],
+            [
+                "web_source_id" => 4,
+                "product_id" => 2,
+                "web_source_url" => "https://www.carrefour.com.br/iphone-14-pro-max-roxo-512gb-mp933071325/p?utm_medium=sem&utm_source=google_pmax_3p&utm_campaign=3p_performancemax_Eletro_Smartphone&gad_source=1&gclid=Cj0KCQiAoeGuBhCBARIsAGfKY7zOa9mpB8OhBfImfPRfYb03iw8Vh9X5TIeWHrou5FekDQq8lQsm_OkaAizFEALw_wcB",
+                'created_at' => date("Y-m-d H:i:s")
             ]
         ];
     }

@@ -39,7 +39,7 @@ class WebSourceService
         foreach($webSources as $webSource) {
             $webSourceDb = $this->getWebSourceById(new WebSourceId($webSource['id']));
             if($webSourceDb->getUrl() != $this->getDomainFromUrl($webSource['url'])){
-                throw new \Exception("Invalid web source url");
+                throw new \Exception(trans('messages.errors.webSourceNotFound'));
             }
 
             $this->webSourceProducts->createProductWebSource($productId, new WebSourceId($webSource['id']), $webSource['url']);

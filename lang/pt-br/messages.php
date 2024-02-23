@@ -14,7 +14,8 @@ return [
         'invalidPassword' => 'Email ou senha inválidos!',
         'userAlreadyExists" => "Usuário já cadastrado!',
         'productNotFound' => 'Produto não encontrado',
-        'productAlreadyExists' => 'usuario ja possui um produto com ean fornecido cadastrado!'
+        'productAlreadyExists' => 'usuario ja possui um produto com ean fornecido cadastrado!',
+        'webSourceNotFound' => 'Web não encontrada',
     ],
 
     'success' => [

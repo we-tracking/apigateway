@@ -10,6 +10,7 @@ class Registration
             "www.extra.com.br" => \App\RPAModules\Domains\Extra\RPA::class,
             "www.casasbahia.com.br" => \App\RPAModules\Domains\CasasBahia\RPA::class,
             "www.pontofrio.com.br" => \App\RPAModules\Domains\PontoFrio\RPA::class,
+            "www.carrefour.com.br" => \App\RPAModules\Domains\Carrefour\RPA::class
         ];
     }
 }
