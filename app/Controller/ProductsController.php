@@ -55,6 +55,7 @@ class ProductsController
         );
     }   
 
+    $this->productService->dispatchToRPA($productId);
     return Response::json([
       "message" => trans('messages.success.productCreated'),
       "data" => [

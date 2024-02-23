@@ -5,11 +5,16 @@ namespace App\Service;
 use App\Entity\UserId;
 use App\Model\Product;
 use App\Entity\ProductId;
+use App\Event\Events\RPACollector;
 use App\ORM\ModelCollection;
+use App\Service\WebSourceService;
 
 class ProductService
 {
-    public function __construct(private Product $product){
+    public function __construct(
+        private Product $product,
+        private WebSourceService $webSourceService
+        ){
 
     }
 
@@ -21,6 +26,12 @@ class ProductService
         }
 
         return $this->product->createProduct($product);
+    }
+
+    public function dispatchToRPA(ProductId $productId): void
+    {
+        $pws = $this->webSourceService->getWebSourceFromProductId($productId);
+        event(new RPACollector($pws));
     }
 
     public function listUserProducts(UserId $userId): ModelCollection
