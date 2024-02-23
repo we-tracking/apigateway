@@ -32,10 +32,10 @@ class WebSourceService
         return $this->webSourceProducts->getWebSourceFromProductId($productId);
     }
 
-    public function createProductWebSource(ProductId $productId, array $webSourceId)
+    public function createProductWebSource(ProductId $productId, array $webSources)
     {
-        foreach($webSourceId as $id) {
-            $this->webSourceProducts->createProductWebSource($productId, new WebSourceId($id));
+        foreach($webSources as $webSource) {
+            $this->webSourceProducts->createProductWebSource($productId, new WebSourceId($webSource['id']), $webSource['url']);
         }
     }
 }
