@@ -26,5 +26,6 @@ return [
         'userCreated' => 'Usuário criado com sucesso',
         'webSourceList' => 'Lista de web gerada com sucesso',
         'productWebSourceList' => 'Lista de web gerada com sucesso',
+        'passwordAltered' => 'Senha alterada com sucesso',
     ],
 ];

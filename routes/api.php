@@ -11,6 +11,7 @@ use App\Http\Middleware\AuthMiddleware;
 
 Router::post("/user/authenticate", App\Controller\AuthenticationController::class . "@auth");
 Router::post("/user/create", App\Controller\UserController::class . "@create");
+Router::post("/user/alter-password", App\Controller\UserController::class . "@alterPassword")->middleware(AuthMiddleware::class);
 
 Router::group("product", function (Router $router) {
     $router->get("/", App\Controller\ProductsController::class . "@list");

@@ -34,7 +34,16 @@ class User extends Model
 
         return new UserId($result->lastId());
 
-        
+    }
+
+    public function alterPassword(UserId $userId, string $password): void
+    {
+        $this->update([
+            'password' => ":password"
+        ])
+        ->addParam('password', $password)
+        ->where('id', '=', $userId->getId())
+        ->execute();
     }
 
 }

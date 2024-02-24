@@ -7,18 +7,19 @@ use App\Entity\UserId;
 use App\Service\UserService;
 use App\Http\Response\Response;
 use App\Input\UserCreationInput;
-use App\Http\Request\RequestInterface;
+use App\Entity\UserAuthenticaded;
+use App\Input\AlterPasswordInput;
 use App\Http\Response\ResponseInterface;
 
 class UserController
 {
-  public function create(UserCreationInput $request, UserService $userService): ResponseInterface
+  public function create(UserCreationInput $input, UserService $userService): ResponseInterface
   {
     $user = $userService->create(
       new User(
         new UserId(),
-        $request->request()->inputs('email'),
-        $request->request()->inputs('password')
+        $input->request()->inputs('email'),
+        $input->request()->inputs('password')
       )
     );
 
@@ -26,6 +27,24 @@ class UserController
       "message" => trans('messages.success.userCreated'),
       "data" => ["id" => $user->getId()]
     ]);
+  }
+
+  public function alterPassword(
+    AlterPasswordInput $input, 
+    UserService $userService, 
+    UserAuthenticaded $userAuthenticaded
+    ): ResponseInterface
+  {
+  
+    $userService->alterPassword(
+      $userAuthenticaded->getUserId(),
+      $input->request()->inputs('password')
+    );
+
+    return Response::json([
+      "message" => trans('messages.success.passwordAltered')
+    ]);
+
   }
 
 }
