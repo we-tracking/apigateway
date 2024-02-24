@@ -43,4 +43,4 @@ Then put all active products to process with:
 
 ## Documentation
 
-see documentation on (postman)[https://documenter.getpostman.com/view/20318312/2sA2r8248x#01c20137-e857-479b-aff9-57dfd714f2d4]
+see documentation on [postman](https://documenter.getpostman.com/view/20318312/2sA2r8248x#01c20137-e857-479b-aff9-57dfd714f2d4)
