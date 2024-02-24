@@ -63,4 +63,15 @@ class ProductsController
       ]
     ]);
   }
+
+  public function deleteProduct(
+    RequestInterface $request,
+    UserAuthenticaded $user
+  ): ResponseInterface {
+    $productId = new ProductId($request->route()->parameter('productId'));
+    $this->productService->deleteProduct($productId, $user->getUserId());
+    return Response::json([
+      "message" => trans('messages.success.productDeleted')
+    ]);
+  }
 }

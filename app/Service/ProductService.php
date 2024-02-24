@@ -34,14 +34,24 @@ class ProductService
         event(new RPACollector($pws));
     }
 
+    public function deleteProduct(ProductId $productId, UserId $userId): void
+    {
+        $product = $this->product->find($productId->getId());
+        if($product === null || $product->user_id != $userId->getId()){
+            throw new \Exception('produto não encontrado!');
+        }
+        
+        $this->product->deleteProduct($productId);
+    }
+
     public function listUserProducts(UserId $userId): ModelCollection
     {
-        return $this->product->findWhere("user_id", "=", $userId->getId());
+        return $this->product->findWhere("status = 'ACTIVE' and user_id", "=", $userId->getId());
     }
 
     public function getAllProducts(): ModelCollection
     {
-        return $this->product->all();
+        return $this->product->findWhere('status', '=', 'ACTIVE');
     }
 
     public function commit()

@@ -26,6 +26,7 @@ return [
         'userCreated' => 'User created successfully',
         'webSourceList' => 'Web source list generated successfully',
         'productWebSourceList' => 'Web source list generated successfully',
-        'passwordAltered' => 'Password changed successfully'
+        'passwordAltered' => 'Password changed successfully',
+        'productDeleted' => 'Product deleted successfully'
     ],
 ];

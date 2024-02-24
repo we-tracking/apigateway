@@ -19,6 +19,7 @@ class Product extends Model
                 'name' => ":name",
                 "user_id" => ":user_id",
                 'ean' => ":ean",
+                'status' => "'ACTIVE'",
                 'image_path' => ":image_path",
                 'created_at' => "NOW()"
             ]);
@@ -36,6 +37,7 @@ class Product extends Model
         $query = $this->update([
             'name' => ":name",
             'ean' => ":ean",
+            'status' => "'ACTIVE'",
             'image_path' => ":image_path",
             'updated_at' => "NOW()"
         ])->where('id', '=', ':id');
@@ -56,6 +58,7 @@ class Product extends Model
         $query = $this->select()
         ->where('user_id', '=', ':userId')
         ->where('ean', '=', ':ean')
+        ->where('status', '=', "'ACTIVE'")
         ->addParams([
             ':userId' => $product->getUserId()->getId(),
             ':ean' => $product->getEan()
@@ -67,6 +70,17 @@ class Product extends Model
         };
 
         return false;
+    }
+
+    public function deleteProduct(ProductId $productId): void
+    {
+        $this->update([
+            'status' => "'INACTIVE'",
+            'updated_at' => 'NOW()'
+        ])
+        ->where('id', '=', ':id')
+        ->addParam(':id', $productId->getId())
+        ->execute();
     }
 }
 

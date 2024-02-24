@@ -27,5 +27,6 @@ return [
         'webSourceList' => 'Lista de web gerada com sucesso',
         'productWebSourceList' => 'Lista de web gerada com sucesso',
         'passwordAltered' => 'Senha alterada com sucesso',
+        'productDeleted' => 'Produto deletado com sucesso'
     ],
 ];
